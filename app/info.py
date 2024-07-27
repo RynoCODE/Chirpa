@@ -1,2 +1,0 @@
-groq_api_key="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"
-personal_prompt="give 10 questions based on the language to judge the proficiency of the user in the language ,some topics to be asked compulsorly is oops, dsa , api fetch and decode and many more important topics" 
