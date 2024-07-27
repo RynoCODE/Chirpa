@@ -4,5 +4,7 @@ chirpa/__pycache__/
 *.pyc
 
 #Virtual Environment
+.env
 01env/
 .venv
+
