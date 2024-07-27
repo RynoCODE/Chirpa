@@ -4,14 +4,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Online Notepad by BKPKVIDEO - A convenient tool for writing, editing, and saving text online. Notepad online for text editing. Free notepad app, no login required"
-    />
-    <meta
-      name="keywords"
-      content="notepad, online notepad, text editor, BKPKVIDEO, write, edit, save, best digital notebook, best digital notepad, remarkable notepad, remarkable digital notepad, digital paper notebook, note pad electronic, notepad online free, digital notepad remarkable, free note taking website, huawei notepad, free online notebook, to do note pad, windows notepad, digital writing notepad, shared notepad, pdf to text pdf, make text to pdf, colornote for iphone, one notepad, advanced notepad, best notepad for mac, digital notepad online, encrypted notepad, free online note book, live notepad, notepad aesthetic, notepad cost, notepad for windows 11, notes taking website free, online notebook for free, online notepad login, shareable notepad, text to pdf converter free, text to word pdf, type text to pdf online free"
-    />
     <link rel="stylesheet" href={% static "css/notepad.css" %} />
     <link
       rel="stylesheet"
@@ -23,33 +15,7 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Online Notepad by BKPKVIDEO - A convenient tool for writing"
-    />
-    <meta
-      property="og:description"
-      content="Online Notepad by BKPKVIDEO - A convenient tool for writing, editing, and saving text online. Notepad online for text editing. Free notepad app, no login required"
-    />
-    <meta
-      property="og:url"
-      content="https://www.bkpkvideo.com/tools/OnlineNotepad/"
-    />
-    <meta property="og:site_name" content="BKPK VIDEO" />
-    <meta
-      property="og:image"
-      content="https://www.bkpkvideo.com/wp-content/uploads/2024/05/thumbnail.png"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@BKPKVIDEO" />
-    <meta name="google-site-verification" content="googlebd28a36d7e7297aa" />
-    <meta name="yandex-verification" content="30bdf7179f639924" />
-    <meta property="fb:app_id" content="730845160831987" />
-    <meta
-      property="facebook-domain-verification"
-      content="bwfynb8ox1kb2y7vhq1iydkp0bnb52"
-    />
+   
     <link
       rel="icon"
       href="https://www.bkpkvideo.com/wp-content/uploads/2022/01/cropped-BKPKVIDEO-app-icon-32x32.png"
@@ -181,14 +147,7 @@
           <i class="fas fa-adjust"></i
           ><span class="button-label">Dark Mode</span>
         </button>
-        <button
-          onclick="showPreferences()"
-          id="preferencesBtn"
-          title="Preferences"
-        >
-          <i class="fas fa-cog"></i
-          ><span class="button-label">Preferences</span>
-        </button>
+       
       </div>
     </div>
     <div class="notepad-container w-full">
@@ -199,9 +158,13 @@
           <h1 class='text-3xl'> Generation Failure</h1>  
         {% endif %}
       </div>
-      <textarea id="notepad" placeholder="Start typing..."></textarea>
+      <form class="w-1/2 h-96" method="post" action="{% url 'process_textarea' %}">
+        {% csrf_token %}
+            <textarea id="notepad" name="text_data" placeholder="Start typing..." class="w-full h-64 p-2 border"></textarea>
+             <input type="submit" value="Next" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      </form>  
     </div>
-    <div class="footer">
+    <!-- <div class="footer">
       <span>© Designed by chirpa</span>
       <button id="scrollToTopBtn" onclick="scrollToTop()">Scroll to Top</button>
     </div>
@@ -303,7 +266,7 @@
         </div>
         <button onclick="replaceText()">Replace</button>
       </div>
-    </div>
+    </div> -->
 
     <script src={% static "js/notepad.js" %}></script>
     <script src="https://cdn.tailwindcss.com"></script>
