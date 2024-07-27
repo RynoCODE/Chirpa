@@ -16,7 +16,7 @@
         <h1>{{ question }}</h1>
         <div>
           <button class="px-5 py-2 m-3 bg-blue-600">
-            <a href="{% url 'notepad' %}">Solve</a>
+            <a href="{% url 'notepad' question.id %}">Solve</a>
           </button>
           <button class="px-5 py-2 m-3 bg-green-600">Solution</button>
         </div>

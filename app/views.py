@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 from .info import groq_api_key
 from django.http import HttpResponseBadRequest
 from groq import Groq
@@ -38,6 +38,7 @@ def question_maker(request):
     if request.method == 'GET':
         user_query = request.GET.get('query', '')
 
+    generated_questions = []
     for i in range(5):
         chat_completion = client.chat.completions.create(
             messages=[
@@ -56,33 +57,21 @@ def question_maker(request):
             text = response_content
         )
         question.save()
-    
+        generated_questions.append(question.text)
+
+    print(generated_questions)
     # questions_list = extract_questions_and_answers(response_content)
     # formatted_questions = [{'text': q} for q in questions_list]
     print(questions)
-    return render(request, 'question_list.html', {'questions': questions})
+    return render(request, 'question_list.html', {'questions': generated_questions})
     
 
 def index(request):
     return render(request, 'index.html')
-def notepad(request):
-    if request.method == 'GET':
-        user_query = request.GET.get('query', '')
+def notepad(request, question_id):
+    question = get_object_or_404(Question, id=question_id)
     
-    chat_completion = client.chat.completions.create(
-            messages=[
-                {
-                    "role": "user",
-                    "content": f"{personal_prompt} : {user_query}"
-                }
-            ],
-            model="llama3-8b-8192"
-    )
-    
-    response_content = chat_completion.choices[0].message.content
-
-    
-    return render(request, 'notepad.html', {'question': response_content})
+    return render(request, 'notepad.html', {'question': question.text})
 
 def signin(request):
     return render(request, 'signin.html')
