@@ -1,11 +1,10 @@
 from django.shortcuts import render, HttpResponse
-from langchain_openai import ChatOpenAI 
-from .info import groq_api_key , personal_prompt
+from .info import groq_api_key
 from .models import Question
 from django.http import HttpResponseBadRequest
 from groq import Groq
 import re
-
+personal_prompt="give 1 question based on the language to judge the proficiency of the user in the language ,some topics to be asked compulsorly is oops, dsa , api fetch and decode and many more important topics  no answer required strictly in this format. Strictly use maximum 50 words only for question"
 
 
 # llama3 = ChatOpenAI(
@@ -61,6 +60,9 @@ def question_maker(request):
 def index(request):
     return render(request, 'index.html')
 def notepad(request):
+    if request.method == 'GET':
+        user_query = request.GET.get('query', '')
+    
     chat_completion = client.chat.completions.create(
             messages=[
                 {
@@ -70,10 +72,11 @@ def notepad(request):
             ],
             model="llama3-8b-8192"
         )
+    
     response_content = chat_completion.choices[0].message.content
 
     
-    return render(request, 'notepad.html')
+    return render(request, 'notepad.html', {'question': response_content})
 def signin(request):
     return render(request, 'signin.html')
 def signup(request):

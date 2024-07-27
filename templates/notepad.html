@@ -194,7 +194,10 @@
     <div class="notepad-container w-full">
       <div class="w-1/2 ml-3">
         {% if question is not none %}
-        <h1 class="text-3xl"> {{ question }}</h1>
+          <h1 class="text-3xl"> {{ question }}</h1>
+        {%else%}
+          <h1 class='text-3xl'> Generation Failure</h1>  
+        {% endif %}
       </div>
       <textarea id="notepad" placeholder="Start typing..."></textarea>
     </div>
