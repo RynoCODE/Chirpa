@@ -8,4 +8,5 @@ urlpatterns = [
     path('notepad/',views.notepad, name='notepad'),
     path('signin/',views.signin),
     path('signup/',views.signup),
+    path('process_textarea/', views.process_textarea, name='process_textarea'),
 ]

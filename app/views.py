@@ -83,8 +83,30 @@ def notepad(request):
 
     
     return render(request, 'notepad.html', {'question': response_content})
+
 def signin(request):
     return render(request, 'signin.html')
 def signup(request):
     return render(request, 'signup.html')
+
+
+
+# Handeling Text Area form
+from .forms import TextAreaForm
+
+def process_textarea(request):
+    if request.method == 'POST':
+        form = TextAreaForm(request.POST)
+        if form.is_valid():
+            text_data = form.cleaned_data['text_data']
+            print(text_data)
+            # Process the text data as needed
+            return HttpResponse(f'Text received: {text_data}')
+            
+    
+    else:
+        form = TextAreaForm()
+        
+    return render(request, 'your_template.html', {'form': form, 'question': 'Your question here'})
+
 
