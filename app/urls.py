@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.dashboard, name='dashboard'),
     path('index/',views.index),
     path('notepad/',views.notepad),
+    path('signin/',views.signin),
 ]
