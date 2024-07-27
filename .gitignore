@@ -8,3 +8,5 @@ chirpa/__pycache__/
 01env/
 .venv
 
+#Api keys
+app/info.py

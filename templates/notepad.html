@@ -193,12 +193,8 @@
     </div>
     <div class="notepad-container w-full">
       <div class="w-1/2 ml-3">
-        <h1 class="text-3xl">What is Python</h1>
-        <p class="font-thin">
-          Hint: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-          quidem architecto in! Voluptatem voluptates doloribus aut libero
-          accusantium id doloremque.
-        </p>
+        {% if question is not none %}
+        <h1 class="text-3xl"> {{ question }}</h1>
       </div>
       <textarea id="notepad" placeholder="Start typing..."></textarea>
     </div>

@@ -10,17 +10,19 @@
   <body>
     <div class="w-full h-screen mt-8 p-2">
       {% for question in questions %}
-        <div class="question w-1/2 flex justify-between bg-zinc-200 items-center p-2 mb-2">
-            <h1>{{ question.text|safe }}</h1>
-          <div>
-            <button class="px-5 py-2 m-3 bg-blue-600">
-              <a href="{% url 'notepad' %}">Solve</a>
-            </button>
-            <button class="px-5 py-2 m-3 bg-green-600">Solution</button>
-          </div>
+      <div
+        class="question w-1/2 flex justify-between bg-zinc-200 items-center p-2 mb-2"
+      >
+        <h1>{{ question }}</h1>
+        <div>
+          <button class="px-5 py-2 m-3 bg-blue-600">
+            <a href="{% url 'notepad' %}">Solve</a>
+          </button>
+          <button class="px-5 py-2 m-3 bg-green-600">Solution</button>
         </div>
+      </div>
       {% empty %}
-        <p>No questions available.</p>
+      <p>No questions available.</p>
       {% endfor %}
     </div>
   </body>
