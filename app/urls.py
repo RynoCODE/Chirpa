@@ -6,4 +6,5 @@ urlpatterns = [
     path('question_maker/', views.question_maker, name='question_maker'),
     path('index/',views.index),
     path('notepad/',views.notepad),
+    path('signin/',views.signin),
 ]
