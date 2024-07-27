@@ -1,6 +1,6 @@
 #pycache files
-core/__pycache__/
-arogyai/__pycache__/
+app/__pycache__/
+chirpa/__pycache__/
 *.pyc
 
 #Virtual Environment
