@@ -9,7 +9,7 @@ urlpatterns = [
     path('verify_otp/', authentication.verify_otp, name='verify_otp'),
     path('index/',views.index),
     path('notepad/<int:question_id>/',views.notepad, name='notepad'),
-    path('signin/',views.signin,name='signin'),
-    path('signup/',views.signup,name='signup'),
+    path('signin/',authentication.signin,name='signin'),
+    path('signup/',authentication.signup,name='signup'),
     path('forms_submit/<int:question_id>/', views.process_textarea, name='forms_submit'),
 ]

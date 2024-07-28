@@ -16,7 +16,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 
-personal_prompt="give 1 question based on the language to judge the proficiency of the user in the language ,some topics to be asked compulsorly is oops, dsa , api fetch and decode and many more important topics  no answer required strictly in this format. Strictly use maximum 50 words only for question"
+personal_prompt="give 1 question based on the language to judge the proficiency of the user in the language ,some topics to be asked compulsorly is oops, dsa , api fetch and decode and many more important topics  no answer required strictly in this format. Strictly use maximum 50 words only for question.Listen carefully some rule - just ask the question no topic no unnessery words just the question"
 
 
 # llama3 = ChatOpenAI(
