@@ -407,3 +407,7 @@ function downloadFile() {
 
   closeDownloadPopup();
 }
+
+function reloadPage() {
+  window.location.reload();
+}

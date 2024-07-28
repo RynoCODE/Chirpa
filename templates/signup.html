@@ -101,29 +101,20 @@
                 Remember me
               </label>
             </div>
-            <div>
-              <a
-                href="jajvascript:void(0);"
-                class="text-blue-600 text-sm font-semibold hover:underline"
-              >
-                Forgot Password?
-              </a>
-            </div>
           </div>
 
           <div class="mt-12">
-            <button
-              type="button"
+            <input
               class="w-full py-2.5 px-4 text-sm font-semibold tracking-wider rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
             >
               Sign in
             </button>
             <p class="text-sm text-center mt-6">
-              Don't have an account
+              Already have an account
               <a
-                href="javascript:void(0);"
+                href="{% url 'signin' %}"
                 class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap"
-                >Register here</a
+                >Sign in here</a
               >
             </p>
           </div>
@@ -140,6 +131,7 @@
               >
                 <path
                   fill="#fbbd00"
+                  
                   d="M120 256c0-25.367 6.989-49.13 19.131-69.477v-86.308H52.823C18.568 144.703 0 198.922 0 256s18.568 111.297 52.823 155.785h86.308v-86.308C126.989 305.13 120 281.367 120 256z"
                   data-original="#fbbd00"
                 />
