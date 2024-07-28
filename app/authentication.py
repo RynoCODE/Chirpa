@@ -5,7 +5,9 @@ import re
 from . models import Question
 from django.contrib import messages
 from .email_validator import is_valid_email
-
+import pyotp
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 def verify_otp(request):
@@ -83,7 +85,7 @@ def signup(request):
         message = f"Hello we are from chirpa,\nYour OTP for account verification is {otp}.\nThank you for registering.\n "
         from_email = settings.EMAIL_HOST_USER
         to_list = [myuser.email]
-        send_mail(subject, message, from_email, to_list, fail_silently=True)
+        send_mail(subject, message, from_email, to_list)
 
         return redirect('verify_otp')
 
