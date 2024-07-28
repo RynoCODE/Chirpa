@@ -119,6 +119,7 @@ def question_maker(request):
 
 def index(request):
     return render(request, 'index.html')
+
 def notepad(request, question_id):
     question = get_object_or_404(Question, id=question_id)
     
