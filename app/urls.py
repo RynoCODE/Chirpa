@@ -8,5 +8,5 @@ urlpatterns = [
     path('notepad/<int:question_id>/',views.notepad, name='notepad'),
     path('signin/',views.signin,name='signin'),
     path('signup/',views.signup,name='signup'),
-    path('process_textarea/', views.process_textarea, name='process_textarea'),
+    path('forms_submit/<int:question_id>/', views.process_textarea, name='forms_submit'),
 ]

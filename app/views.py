@@ -78,43 +78,6 @@ def question_maker(request):
     # formatted_questions = [{'text': q} for q in questions_list]
     print(questions)
     return render(request, 'question_list.html', {'questions': generated_questions})
-
-# @login_required
-# def question_maker(request):
-#     if request.method == 'GET':
-#         user_query = request.GET.get('query', '')
-
-#     generated_questions = []
-#     for i in range(5):
-#         try:
-#             chat_completion = client.chat.completions.create(
-#                 messages=[
-#                     {
-#                         "role": "user",
-#                         "content": f"{personal_prompt} : python"
-#                     }
-#                 ],
-#                 model="llama3-8b-8192"
-#             )
-            
-#             response_content = chat_completion.choices[0].message.content
-#             generated_questions.append(response_content)
-            
-#             # Ensure request.user is not an AnonymousUser
-#             if request.user.is_authenticated:
-#                 question = Question(
-#                     user=request.user,
-#                     text=response_content
-#                 )
-#                 question.save()
-#             else:
-#                 print("User is not authenticated")
-                
-#         except Exception as e:
-#             print(f"Error generating or saving question: {e}")
-
-#     print(generated_questions)
-#     return render(request, 'question_list.html', {'questions': generated_questions})
     
 
 def index(request):
@@ -123,7 +86,9 @@ def index(request):
 def notepad(request, question_id):
     question = get_object_or_404(Question, id=question_id)
     
-    return render(request, 'notepad.html', {'question': question.text})
+
+
+    return render(request, 'notepad.html', {'question': question})
 
 
 
@@ -209,22 +174,17 @@ def signup(request):
 
 
 
-# Handeling Text Area form
-from .forms import TextAreaForm
 
-def process_textarea(request):
+
+def process_textarea(request, question_id):
+    print(question_id)
     if request.method == 'POST':
-        form = TextAreaForm(request.POST)
-        if form.is_valid():
-            text_data = form.cleaned_data['text_data']
-            print(text_data)
-            # Process the text data as needed
-            return HttpResponse(f'Text received: {text_data}')
-            
-    
-    else:
-        form = TextAreaForm()
-        
-    return render(request, 'your_template.html', {'form': form, 'question': 'Your question here'})
+        question = get_object_or_404(Question, id=question_id)
+        text_data = request.POST.get('text_data')
+        question.answer = text_data
+        question.save()
+
+
+    return HttpResponse(f'Text received: {text_data}')
 
 

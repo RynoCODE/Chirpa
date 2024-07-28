@@ -130,18 +130,18 @@
     <div class="notepad-container w-full">
       <div class="w-1/2 ml-3 p-2">
         {% if question is not none %}
-          <h1 class="text-3xl"> {{ question }}</h1>
+          <h1 class="text-3xl"> {{ question.text }}</h1>
         {%else%}
           <h1 class='text-3xl'> Generation Failure</h1>  
         {% endif %}
       </div>
-      <form class="w-1/2 h-96" method="post" action="{% url 'process_textarea' %}">
+      <form class="w-1/2 h-96" method="post" action="{% url 'forms_submit' question.id %}">
         {% csrf_token %}
             <textarea id="notepad" name="text_data" placeholder="Start typing..." class="w-full h-64 p-2 border"></textarea>
-             <input type="submit" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-             <button  onclick="reloadPage()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Next</button>
+            <input type="submit" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button  onclick="reloadPage()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Next</button>
       </form>  
-      
+
     </div>
     <script src={% static "js/notepad.js" %}></script>
     <script src="https://cdn.tailwindcss.com"></script>
