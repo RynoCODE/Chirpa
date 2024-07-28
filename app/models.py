@@ -10,3 +10,11 @@ class Question(models.Model):
     
     def __str__(self):
         return self.text[:50]
+    
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    otp = models.CharField(max_length=6, blank=True, null=True)
+
+User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
