@@ -6,6 +6,7 @@ chirpa/__pycache__/
 #Virtual Environment
 .env
 01env/
+02env/
 .venv
 
 #Api keys
