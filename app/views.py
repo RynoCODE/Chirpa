@@ -127,8 +127,8 @@ def process_textarea(request, question_id):
     return redirect('question_maker')
 
 
-@login_required
-def evaluation(request):
+# @login_required
+def user_evaluation(request):
     
     user = request.user    
     # user = get_object_or_404(User, id=user)
@@ -145,7 +145,8 @@ def evaluation(request):
             count += 1
     average_score = total_score / count if count > 0 else 0
     print(average_score)
-    # return render(request, 'evaluation.html', {'average_score': average_score})
+    # return HttpResponse(average_score)
+    return render(request, 'evaluation.html', {'average_score': average_score})
 
 
     
