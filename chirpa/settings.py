@@ -1,5 +1,5 @@
 
-
+from .info import *
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -15,8 +15,16 @@ SECRET_KEY = 'django-insecure-lt8p=3ta%dwo(evw^p3@hle26z(d6bzxt3#aw%b0oxr2ai*ahf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+
+EMAIL_USE_TLS = EMAIL_USE_TLS
+EMAIL_HOST = EMAIL_HOST
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+EMAIL_PORT = EMAIL_PORT
+AUTH = AUTH
+KEY = KEY
 
 # Application definition
 
