@@ -124,7 +124,7 @@ def process_textarea(request, question_id):
         question.AbsoluteAnswer = response_content
         question.save()
 
-    return HttpResponse(f'Text received: {text_data}')
+    return redirect('question_maker')
 
 
 @login_required

@@ -4,7 +4,7 @@ from . import authentication
 
 
 urlpatterns = [
-    path('', views.dashboard, name='dashboard'),
+    path('', views.index, name='index'),
     path('question_maker/', views.question_maker, name='question_maker'),
     path('verify_otp/', authentication.verify_otp, name='verify_otp'),
     path('index/',views.index),
