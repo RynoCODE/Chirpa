@@ -1,12 +1,15 @@
 from django.urls import path
 from . import views
+from . import authentication
+
 
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
     path('question_maker/', views.question_maker, name='question_maker'),
+    path('verify_otp/', authentication.verify_otp, name='verify_otp'),
     path('index/',views.index),
     path('notepad/<int:question_id>/',views.notepad, name='notepad'),
-    path('signin/',views.signin,name='signin'),
-    path('signup/',views.signup,name='signup'),
+    path('signin/',authentication.signin,name='signin'),
+    path('signup/',authentication.signup,name='signup'),
     path('process_textarea/', views.process_textarea, name='process_textarea'),
 ]
