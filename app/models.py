@@ -5,7 +5,8 @@ class Question(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField(null=False)
     answer = models.TextField(null=True)
-    eval = models.FloatField(default=0)
+    score = models.FloatField(default=0)
+    AbsoluteAnswer = models.TextField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

@@ -11,4 +11,6 @@ chirpa/__pycache__/
 #Api keys
 app/info.py
 
+#database
 db.sqlite3
+app/migrations/
