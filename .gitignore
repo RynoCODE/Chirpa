@@ -10,3 +10,5 @@ chirpa/__pycache__/
 
 #Api keys
 app/info.py
+
+db.sqlite3
