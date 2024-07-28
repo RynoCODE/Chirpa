@@ -57,7 +57,7 @@ def question_maker(request):
             text = response_content
         )
         question.save()
-        generated_questions.append(question.text)
+        generated_questions.append(question)
 
     print(generated_questions)
     # questions_list = extract_questions_and_answers(response_content)
