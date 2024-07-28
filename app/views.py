@@ -48,73 +48,73 @@ questions =[]
 
 
 # @login_required
-# def question_maker(request):
-#     if request.method == 'GET':
-#         user_query = request.GET.get('query', '')
-
-#     generated_questions = []
-#     for i in range(5):
-#         chat_completion = client.chat.completions.create(
-#             messages=[
-#                 {
-#                     "role": "user",
-#                     "content": f"{personal_prompt} : python"
-#                 }
-#             ],
-#             model="llama3-8b-8192"
-#         )
-
-#         response_content = chat_completion.choices[0].message.content
-#         questions.append(response_content)
-#         question = Question(
-#             user = request.user,
-#             text = response_content
-#         )
-#         question.save()
-#         generated_questions.append(question.text)
-
-#     print(generated_questions)
-#     # questions_list = extract_questions_and_answers(response_content)
-#     # formatted_questions = [{'text': q} for q in questions_list]
-#     print(questions)
-#     return render(request, 'question_list.html', {'questions': generated_questions})
-
-# @login_required
 def question_maker(request):
     if request.method == 'GET':
         user_query = request.GET.get('query', '')
 
     generated_questions = []
     for i in range(5):
-        try:
-            chat_completion = client.chat.completions.create(
-                messages=[
-                    {
-                        "role": "user",
-                        "content": f"{personal_prompt} : python"
-                    }
-                ],
-                model="llama3-8b-8192"
-            )
-            
-            response_content = chat_completion.choices[0].message.content
-            generated_questions.append(response_content)
-            
-            # Ensure request.user is not an AnonymousUser
-            if request.user.is_authenticated:
-                question = Question(
-                    user=request.user,
-                    text=response_content
-                )
-                question.save()
-            else:
-                print("User is not authenticated")
-                
-        except Exception as e:
-            print(f"Error generating or saving question: {e}")
+        chat_completion = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": f"{personal_prompt} : python"
+                }
+            ],
+            model="llama3-8b-8192"
+        )
+
+        response_content = chat_completion.choices[0].message.content
+        questions.append(response_content)
+        question = Question(
+            user = request.user,
+            text = response_content
+        )
+        question.save()
+        generated_questions.append(question)
 
     print(generated_questions)
+    # questions_list = extract_questions_and_answers(response_content)
+    # formatted_questions = [{'text': q} for q in questions_list]
+    print(questions)
     return render(request, 'question_list.html', {'questions': generated_questions})
+
+# @login_required
+# def question_maker(request):
+#     if request.method == 'GET':
+#         user_query = request.GET.get('query', '')
+
+#     generated_questions = []
+#     for i in range(5):
+#         try:
+#             chat_completion = client.chat.completions.create(
+#                 messages=[
+#                     {
+#                         "role": "user",
+#                         "content": f"{personal_prompt} : python"
+#                     }
+#                 ],
+#                 model="llama3-8b-8192"
+#             )
+            
+#             response_content = chat_completion.choices[0].message.content
+#             generated_questions.append(response_content)
+            
+#             # Ensure request.user is not an AnonymousUser
+#             if request.user.is_authenticated:
+#                 question = Question(
+#                     user=request.user,
+#                     text=response_content
+#                 )
+#                 question.save()
+#             else:
+#                 print("User is not authenticated")
+                
+#         except Exception as e:
+#             print(f"Error generating or saving question: {e}")
+
+#     print(generated_questions)
+#     return render(request, 'question_list.html', {'questions': generated_questions})
     
 
 def index(request):
