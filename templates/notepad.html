@@ -100,9 +100,9 @@
       </div>
       <form class="w-1/2 h-96" method="post" action="{% url 'forms_submit' question.id %}">
         {% csrf_token %}
-            <textarea id="notepad" name="text_data" placeholder="Start typing..." class="w-full h-64 p-2 border"></textarea>
+            <textarea id="notepad" name="text_data" placeholder="Start typing..." class="w-full h-64 p-2 border text-black"></textarea>
             <input type="submit" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-2">
-            <button  onclick="reloadPage()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Next</button>
+           
       </form>  
 
     </div>
