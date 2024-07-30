@@ -12,4 +12,6 @@ urlpatterns = [
     path('signin/',authentication.signin,name='signin'),
     path('signup/',authentication.signup,name='signup'),
     path('forms_submit/<int:question_id>/', views.process_textarea, name='forms_submit'),
+    path('user_evaluation/', views.user_evaluation, name='user_evaluation'),
+
 ]
